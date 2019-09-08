@@ -1,0 +1,12 @@
+- name: Gen locale
+  locale_gen:
+    name: "{{ item }}"
+  with_items:
+    - "{{ locale_default }}"
+    - "{{ locale_format }}"
+
+- name: Set locale
+  template: 
+    src: etc/default/locale.j2 
+    dest: /etc/default/locale
+

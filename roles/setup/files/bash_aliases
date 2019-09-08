@@ -1,0 +1,1 @@
+alias cputemp='vcgencmd measure_temp | grep -o -E "[0-9\\.]+"'

@@ -1,0 +1,26 @@
+- name: Locales
+  include: locale.yml
+  become: true
+
+- name: Timezones
+  include: timezone.yml
+  become: true
+
+- name: Wifi
+  include: wifi.yml
+  become: true
+
+- name: Apt
+  include: apt.yml
+  become: true
+
+- name: Dotfiles
+  include: dotfiles.yml
+
+- name: sshd_config
+  include: sshd_config.yml
+  become: true
+
+- name: Generate ssh-keys
+  include: ssh_key.yml
+ 

@@ -1,0 +1,25 @@
+- name: Check if docker is installed by checking if the command exists
+  shell: if [ $(command -v docker) ]; then echo "yes"; else echo "no"; fi
+  register: docker_exists
+  become: true
+
+- name: Install docker with the convenience script if it is not installed
+  shell: curl -sSL https://get.docker.com | sh
+  args:
+    warn: no # using curl instead of get_url is ok here
+  when: docker_exists.stdout == "no"
+  become: true
+
+- name: Add group "docker"
+  group:
+    name: docker
+    state: present
+  become: true
+
+- name: Add user to docker-group
+  user:
+    name: "{{ ansible_user }}"
+    groups: docker
+    append: yes
+  become: true
+

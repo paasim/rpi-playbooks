@@ -1,0 +1,17 @@
+- name: copy dotfiles
+  copy:
+    src: "{{ item }}"
+    dest: "/home/{{ ansible_user }}/.{{ item }}"
+  with_items:
+    - bashrc
+    - inputrc
+    - vimrc
+
+- name: copy rpi-specific dotfiles
+  copy:
+    src: "{{ item }}"
+    dest: "/home/{{ ansible_user }}/.{{ item }}"
+  with_items:
+    - bash_aliases
+  when: inventory_hostname is match("rpi")
+

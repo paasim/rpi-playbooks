@@ -1,0 +1,8 @@
+- name: Set up authorized keys
+  authorized_key: 
+    user: "{{ ansible_user }}"
+    key: "{{ item }}"
+  with_file:
+    - pubkey_ima
+    - pubkey_mbp
+

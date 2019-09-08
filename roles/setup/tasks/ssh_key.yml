@@ -1,0 +1,8 @@
+- name: Create .ssh
+  file:
+    path: "/home/{{ ansible_user }}/.ssh"
+    state: directory
+
+- openssh_keypair: 
+    path: "/home/{{ ansible_user }}/.ssh/id_rsa"
+

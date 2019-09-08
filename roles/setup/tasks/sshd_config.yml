@@ -1,0 +1,41 @@
+- name: sshd_config, add correct lines
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    line: "{{ item }}"
+  with_items:
+    - "UsePrivilegeSeparation yes"
+    - "PermitRootLogin no"
+    - "StrictModes yes"
+    - "RSAAuthentication yes"
+    - "PubkeyAuthentication yes"
+    - "HostbasedAuthentication no"
+    - "IgnoreUserKnownHosts yes"
+    - "IgnoreRhosts yes"
+    - "RhostsRSAAuthentication no"
+    - "PasswordAuthentication no"
+    - "PermitEmptyPasswords no"
+    - "ChallengeResponseAuthentication no"
+    - "UsePAM no"
+    - "X11Forwarding no"
+
+- name: sshd_config, remove old lines
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "{{ item }}"
+    state: absent
+  with_items:
+    - "UsePrivilegeSeparation no"
+    - "PermitRootLogin yes"
+    - "StrictModes no"
+    - "^RSAAuthentication no"
+    - "PubkeyAuthentication no"
+    - "HostbasedAuthentication yes"
+    - "IgnoreUserKnownHosts no"
+    - "IgnoreRhosts no"
+    - "RhostsRSAAuthentication yes"
+    - "PasswordAuthentication yes"
+    - "PermitEmptyPasswords yes"
+    - "ChallengeResponseAuthentication yes"
+    - "UsePAM yes"
+    - "X11Forwarding yes"
+

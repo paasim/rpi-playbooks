@@ -1,0 +1,8 @@
+- name: Install sense-hat
+  include: sense.yml
+  become: true
+
+- name: Install other packages with apt
+  include: apt.yml
+  become: true
+
