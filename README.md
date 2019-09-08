@@ -1,6 +1,6 @@
 # playbooks
 
-Playbooks for setupping raspberry pi's.
+Playbooks for setting up rpis.
 
 ## Usage
 
@@ -19,3 +19,5 @@ ansible-playbook hat.yml -K --ask-vault-pass
 
 # reboot a machine
 ansible-playbook reboot.yml -K --ask-vault-pass
+```
+
