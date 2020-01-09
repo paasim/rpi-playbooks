@@ -1,0 +1,5 @@
+- hosts: hre
+  become: true
+  roles:
+    - hre
+  
