@@ -12,7 +12,7 @@ ansible-playbook ssh.yml -k --ask-vault-pass
 ansible-playbook setup.yml -K --ask-vault-pass
 
 # set up docker
-ansible-playbook setup.yml -K --ask-vault-pass
+ansible-playbook docker.yml -K --ask-vault-pass
 
 # set up sense-hat
 ansible-playbook hat.yml -K --ask-vault-pass
